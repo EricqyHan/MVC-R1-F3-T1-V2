@@ -67,3 +67,28 @@ async function markIncomplete(){
         console.log(err)
     }
 }
+
+
+const deleteThis = document.getElementById('deleteWish')
+
+deleteThis.addEventListener('click', deleteThisWish)
+
+async function deleteThisWish(){
+    const wishId = this.parentNode.dataset.id
+    try{
+        const response = await fetch('/wishes/deleteWish',{
+            method: "delete",
+            headers:{'Content-Type': "application/json"},
+            body:JSON.stringify({
+                'clientWish': wishId,
+            })
+        })
+        const data = await response.json()
+        console.log(data)
+        location.reload()
+    }
+    catch(err){
+        console.log(err)
+    }
+    
+}

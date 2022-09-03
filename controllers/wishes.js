@@ -35,6 +35,15 @@ module.exports = {
 
     },
     deleteWish: async(req,res) =>{
+        try{
+            console.log(req)
+            await Wish.findOneAndDelete({_id: req.body.clientWish})
+            console.log('wish deleted')
+            res.json('deleted wish')
+        }
+        catch(err){
+            console.log(err)
+        }
 
     },
 }

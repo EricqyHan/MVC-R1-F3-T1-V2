@@ -24,10 +24,11 @@
 
     <ul> 
         <% wishes.forEach(e =>{ %>
-            <li>
+            <li data-id="<%=e._id%>">
                 <h2><%=e.wish%></h2>
                 <span>Cost: $<%=e.price + '.00'%></span>
                 <a href='<%=e.url%>'>Link To Item</a>
+                <span id="deleteWish">Delete</span>
             </li>
         <%})%>
     </ul>   
