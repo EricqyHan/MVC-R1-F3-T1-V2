@@ -7,7 +7,7 @@ const {ensureAuth} = require('../middleware/auth')
 
 router.get('/', ensureAuth, wishesController.getWishes )
 router.post('/addWish', wishesController.makeWish)
-router.put('/markWishGranted', wishesController.markGranted)
+router.put('/markGranted', wishesController.markGranted)
 router.put('/markWishing', wishesController.markWishing)
 router.delete('/deleteWish', wishesController.deleteWish)
 

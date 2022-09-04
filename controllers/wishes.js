@@ -29,15 +29,30 @@ module.exports = {
         
     },
     markGranted: async(req,res) =>{
-
+        try{
+            await Wish.findOneAndUpdate({_id: req.body.wishIdFromJSFile}, {purchased: true})
+            console.log('wish marked granted')
+            res.json('granted')
+        }
+        catch(err){
+            console.log(err)
+        }
     },
     markWishing: async(req,res) =>{
+        try{
+            await Wish.findOneAndUpdate({_id: req.body.wishIdFromJSFile}, {purchased: false})
+            console.log('wish marked wishing')
+            res.json('marked wishing')
+        }
+        catch(err){
+            console.log(err)
+        }
 
     },
     deleteWish: async(req,res) =>{
         try{
             console.log(req)
-            await Wish.findOneAndDelete({_id: req.body.clientWish})
+            await Wish.findOneAndDelete({_id: req.body.wishIdFromJSFile})
             console.log('wish deleted')
             res.json('deleted wish')
         }
