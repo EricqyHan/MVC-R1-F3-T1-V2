@@ -1,27 +1,41 @@
 const deleteBtn = document.querySelectorAll('.del')
+const wishItem = document.querySelectorAll('span.not')
+const wishGranted = document.querySelectorAll('span.granted')
+
+//Delete both of these when transitioned from todos to wishes:
 const todoItem = document.querySelectorAll('span.not')
 const todoComplete = document.querySelectorAll('span.completed')
 
+
 Array.from(deleteBtn).forEach((el)=>{
-    el.addEventListener('click', deleteTodo)
+    el.addEventListener('click', deleteWish)
 })
 
+Array.from(wishItem).forEach((el) => {
+    el.addEventListener('click', markGranted)
+})
+
+Array.from(wishGranted).forEach((el) => {
+    el.addEventListener('click', markWishing)
+})
+
+//Delete both of these Arrays/listeners when transitioned from todos to wishes:
 Array.from(todoItem).forEach((el)=>{
     el.addEventListener('click', markComplete)
 })
-
 Array.from(todoComplete).forEach((el)=>{
     el.addEventListener('click', markIncomplete)
 })
 
-async function deleteTodo(){
-    const todoId = this.parentNode.dataset.id
+
+async function deleteWish(){
+    const wishId = this.parentNode.dataset.id
     try{
-        const response = await fetch('todos/deleteTodo', {
+        const response = await fetch('wishes/deleteWish', {
             method: 'delete',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
-                'todoIdFromJSFile': todoId
+                'wishIdFromJSFile': wishId
             })
         })
         const data = await response.json()
@@ -31,6 +45,46 @@ async function deleteTodo(){
         console.log(err)
     }
 }
+
+async function markGranted(){
+    const wishId = this.parentNode.dataset.id
+    try{
+        const response = await fetch('wishes/markGranted', {
+            method: 'put',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify({
+                'wishIdFromJSFile': wishId
+            })
+        })
+        const data = await response.json()
+        console.log(data)
+        location.reload()
+    }catch(err){
+        console.log(err)
+    }
+}
+
+async function markWishing(){
+    const wishId = this.parentNode.dataset.id
+    try{
+        const response = await fetch('wishes/markWishing', {
+            method: 'put',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify({
+                'wishIdFromJSFile': wishId
+            })
+        })
+        const data = await response.json()
+        console.log(data)
+        location.reload()
+    }catch(err){
+        console.log(err)
+    }
+}
+
+//
+// Delete below this line when we have transitioned to wishes:
+//
 
 async function markComplete(){
     const todoId = this.parentNode.dataset.id
