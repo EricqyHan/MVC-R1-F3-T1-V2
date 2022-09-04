@@ -31,7 +31,7 @@ Array.from(todoComplete).forEach((el)=>{
 async function deleteWish(){
     const wishId = this.parentNode.dataset.id
     try{
-        const response = await fetch('todos/deleteWish', {
+        const response = await fetch('wishes/deleteWish', {
             method: 'delete',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
@@ -49,7 +49,7 @@ async function deleteWish(){
 async function markGranted(){
     const wishId = this.parentNode.dataset.id
     try{
-        const response = await fetch('todos/markGranted', {
+        const response = await fetch('wishes/markGranted', {
             method: 'put',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
@@ -67,7 +67,7 @@ async function markGranted(){
 async function markWishing(){
     const wishId = this.parentNode.dataset.id
     try{
-        const response = await fetch('todos/markWishing', {
+        const response = await fetch('wishes/markWishing', {
             method: 'put',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
