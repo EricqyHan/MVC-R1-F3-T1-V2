@@ -30,7 +30,8 @@ module.exports = {
     
     markGranted: async(req,res) =>{
         try {
-            await Wish.findOneAndUpdate({ __id:req.body.wishIdFromJSFile}, {
+            console.log('got req')
+            await Wish.findOneAndUpdate({_id:req.body.wishIdFromJSFile}, {
                 purchased: true
             })
             console.log('Wish Granted!')
@@ -42,7 +43,8 @@ module.exports = {
 
     markWishing: async(req,res) =>{
         try {
-            await Wish.findOneAndUpdate({__id:req.body.wishIdFromJSFile}, {
+            console.log('got req')
+            await Wish.findOneAndUpdate({_id:req.body.wishIdFromJSFile}, {
                 purchased: false
             })
             console.log('Wish Unfulfilled!')
