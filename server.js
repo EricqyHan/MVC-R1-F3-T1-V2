@@ -8,7 +8,6 @@ const flash = require('express-flash')
 const logger = require('morgan')
 const connectDB = require('./config/database')
 const mainRoutes = require('./routes/main')
-const todoRoutes = require('./routes/todos')
 const wishRoutes = require('./routes/wishes')
 
 require('dotenv').config({path: './config/.env'})
@@ -40,7 +39,6 @@ app.use(passport.session())
 app.use(flash())
   // www.myproject.com/wishes
 app.use('/', mainRoutes)
-app.use('/todos', todoRoutes)
 app.use('/wishes', wishRoutes)
  
 app.listen(process.env.PORT, ()=>{
