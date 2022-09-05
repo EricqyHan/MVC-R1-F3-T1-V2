@@ -27,7 +27,7 @@ module.exports = {
         }
         
     },
-
+    
     markGranted: async(req,res) =>{
         try {
             await Wish.findOneAndUpdate({ __id:req.body.wishIdFromJSFile}, {
@@ -53,6 +53,15 @@ module.exports = {
     },
     
     deleteWish: async(req,res) =>{
+        try{
+            console.log(req)
+            await Wish.findOneAndDelete({_id: req.body.wishIdFromJSFile})
+            console.log('wish deleted')
+            res.json('deleted wish')
+        }
+        catch(err){
+            console.log(err)
+        }
 
     },
 }

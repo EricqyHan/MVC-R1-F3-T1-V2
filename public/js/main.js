@@ -1,32 +1,18 @@
 const deleteBtn = document.querySelectorAll('.del')
-const wishItem = document.querySelectorAll('span.not')
-const wishGranted = document.querySelectorAll('span.granted')
-
-//Delete both of these when transitioned from todos to wishes:
-const todoItem = document.querySelectorAll('span.not')
-const todoComplete = document.querySelectorAll('span.completed')
-
+const wishItem = document.querySelectorAll('h2.not')
+const wishGranted = document.querySelectorAll('h2.granted')
 
 Array.from(deleteBtn).forEach((el)=>{
     el.addEventListener('click', deleteWish)
 })
 
-Array.from(wishItem).forEach((el) => {
+Array.from(wishItem).forEach((el)=>{
     el.addEventListener('click', markGranted)
 })
 
-Array.from(wishGranted).forEach((el) => {
+Array.from(wishGranted).forEach((el)=>{
     el.addEventListener('click', markWishing)
 })
-
-//Delete both of these Arrays/listeners when transitioned from todos to wishes:
-Array.from(todoItem).forEach((el)=>{
-    el.addEventListener('click', markComplete)
-})
-Array.from(todoComplete).forEach((el)=>{
-    el.addEventListener('click', markIncomplete)
-})
-
 
 async function deleteWish(){
     const wishId = this.parentNode.dataset.id
@@ -65,6 +51,7 @@ async function markGranted(){
 }
 
 async function markWishing(){
+    console.log('clicked')
     const wishId = this.parentNode.dataset.id
     try{
         const response = await fetch('wishes/markWishing', {
@@ -89,11 +76,11 @@ async function markWishing(){
 async function markComplete(){
     const todoId = this.parentNode.dataset.id
     try{
-        const response = await fetch('todos/markComplete', {
+        const response = await fetch('wishes/markWishing', {
             method: 'put',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
-                'todoIdFromJSFile': todoId
+                'wishIdFromJSFile': wishId
             })
         })
         const data = await response.json()
@@ -104,14 +91,15 @@ async function markComplete(){
     }
 }
 
-async function markIncomplete(){
-    const todoId = this.parentNode.dataset.id
+async function markGranted(){
+    console.log('clicked')
+    const wishId = this.parentNode.dataset.id
     try{
-        const response = await fetch('todos/markIncomplete', {
+        const response = await fetch('wishes/markGranted', {
             method: 'put',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
-                'todoIdFromJSFile': todoId
+                'wishIdFromJSFile': wishId
             })
         })
         const data = await response.json()

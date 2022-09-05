@@ -1,7 +1,7 @@
 h1{
     color: red;
 }
-.completed{
+.granted{
     text-decoration: line-through;
     color: gray;
 }
