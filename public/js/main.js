@@ -32,9 +32,49 @@ async function deleteWish(){
     }
 }
 
+async function markGranted(){
+    const wishId = this.parentNode.dataset.id
+    try{
+        const response = await fetch('wishes/markGranted', {
+            method: 'put',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify({
+                'wishIdFromJSFile': wishId
+            })
+        })
+        const data = await response.json()
+        console.log(data)
+        location.reload()
+    }catch(err){
+        console.log(err)
+    }
+}
+
 async function markWishing(){
     console.log('clicked')
     const wishId = this.parentNode.dataset.id
+    try{
+        const response = await fetch('wishes/markWishing', {
+            method: 'put',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify({
+                'wishIdFromJSFile': wishId
+            })
+        })
+        const data = await response.json()
+        console.log(data)
+        location.reload()
+    }catch(err){
+        console.log(err)
+    }
+}
+
+//
+// Delete below this line when we have transitioned to wishes:
+//
+
+async function markComplete(){
+    const todoId = this.parentNode.dataset.id
     try{
         const response = await fetch('wishes/markWishing', {
             method: 'put',

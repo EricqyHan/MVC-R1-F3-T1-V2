@@ -9,9 +9,8 @@ module.exports = {
         catch(err){
             console.log(err)
         }
-       
-
     },
+
     makeWish: async(req,res) =>{
         try{
             await Wish.create({
@@ -28,27 +27,31 @@ module.exports = {
         }
         
     },
+    
     markGranted: async(req,res) =>{
-        try{
-            await Wish.findOneAndUpdate({_id: req.body.wishIdFromJSFile}, {purchased: true})
-            console.log('wish marked granted')
-            res.json('granted')
-        }
-        catch(err){
+        try {
+            await Wish.findOneAndUpdate({ __id:req.body.wishIdFromJSFile}, {
+                purchased: true
+            })
+            console.log('Wish Granted!')
+            res.json('Wish Granted!')
+        } catch(err) {
             console.log(err)
         }
     },
-    markWishing: async(req,res) =>{
-        try{
-            await Wish.findOneAndUpdate({_id: req.body.wishIdFromJSFile}, {purchased: false})
-            console.log('wish marked wishing')
-            res.json('marked wishing')
-        }
-        catch(err){
-            console.log(err)
-        }
 
+    markWishing: async(req,res) =>{
+        try {
+            await Wish.findOneAndUpdate({__id:req.body.wishIdFromJSFile}, {
+                purchased: false
+            })
+            console.log('Wish Unfulfilled!')
+            res.json('Wish Unfulfilled!')
+        } catch(err) {
+            console.log(err)
+        }
     },
+    
     deleteWish: async(req,res) =>{
         try{
             console.log(req)
