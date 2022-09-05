@@ -23,6 +23,7 @@ module.exports = {
             res.redirect('/wishes')
         }
         catch(err){
+            
             console.log(err)
         }
         

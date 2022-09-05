@@ -1,5 +1,17 @@
-h1{
-    color: red;
+
+.indexBody,html{
+    min-height: 100%;
+}
+
+
+body{
+    font-family: 'Oxygen', sans-serif;
+    background: linear-gradient(#A1E5AB,#90BAAD);
+    justify-content: space-around;
+}
+.formContainer{
+    display: flex;
+    justify-content: space-around;  
 }
 .granted{
     text-decoration: line-through;
@@ -7,4 +19,148 @@ h1{
 }
 .not{
     text-decoration: underline;
+}
+.wishContainer{
+    margin: 0 auto;
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: space-around;
+}
+.wishCard{
+    width: 100%;
+    color: #ADF6B1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 10px;
+    padding: 25px;
+    border: 3px solid rgb(53, 66, 80);
+    border-radius: 50px;
+    background: linear-gradient(rgb(110, 139, 169),rgb(73,92,112),rgb(47, 59, 72));
+
+}
+li{
+    list-style: none;
+    text-shadow: 2px 2px 2px rgba(0,0,0,.7);
+}
+a{
+    cursor: pointer;
+}
+.wishDetails{
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+    color:#ADF6B1;
+
+}
+a.wishDetails,.logout{
+    text-decoration: none;
+    color:#ADF6B1;
+    font-style:italic;
+}
+.logout{
+    font-style: normal;
+}
+.del,.logout{
+    display: inline-block;
+    padding: 5px 10px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 20px;
+    width: 90px;
+    border: 2px solid #FF595E;
+    background: linear-gradient(rgb(47,59,72), rgb(37, 46, 56));
+    border-radius: 20px;
+
+}
+.del:hover{
+    box-shadow: inset 0 10px 5px rgba(0,0,0,.4);
+}
+form,li{
+    box-shadow: 3px 3px 3px rgba(0,0,0,.5);
+}
+
+.form-style-4{
+    margin: 30px auto;
+	width: 450px;
+	font-size: 16px;
+	background: #495C70;
+	padding: 30px 30px 15px 30px;
+	border: 5px solid #53687E;
+}
+
+.form-style-4 legend{
+    font-weight: 700;
+    font-size: 20px;
+    color: white;
+    font-family: 'Oxygen', sans-serif;
+}
+.form-style-4 input[type=submit],
+.form-style-4 button[type=submit],
+.form-style-4 input[type=text],
+.form-style-4 input[type=email],
+.form-style-4 input[type=password],
+.form-style-4 label
+{
+	font-family: 'Oxygen', sans-serif;
+	font-size: 16px;
+	color: #fff;
+
+}
+.form-style-4 label {
+	display:block;
+	margin-bottom: 10px;
+}
+.form-style-4 label > span{
+	display: inline-block;
+	float: left;
+	width: 150px;
+}
+.form-style-4 input[type=text],
+.form-style-4 input[type=password],
+.form-style-4 input[type=email] 
+{
+	background: transparent;
+	border: none;
+	border-bottom: 1px dashed #83A4C5;
+	width: 275px;
+	outline: none;
+	padding: 0px 0px 0px 0px;
+	font-style: italic;
+}
+.form-style-4 input[type=text]:focus,
+.form-style-4 input[type=email]:focus,
+.form-style-4 input[type=password]:focus
+{
+	border-bottom: 1px dashed #D9FFA9;
+}
+
+.form-style-4 input[type=submit],
+.form-style-4 input[type=button],
+.form-style-4 button[type=submit]{
+	background: #576E86;
+    display: block;
+    margin: 10px 0 ;
+	border: none;
+	padding: 8px 10px 8px 10px;
+	border-radius: 5px;
+	color: #A8BACE;
+}
+.form-style-4 input[type=submit]:hover,
+.form-style-4 input[type=button]:hover{
+background: #394D61;
+}
+
+@media screen and (max-width: 578px){
+    .wishCard{
+        width: 100%
+    }
+    .wishContainer{
+        padding: 0;
+        width: 100%;
+        margin: 0;
+    }
+
 }
