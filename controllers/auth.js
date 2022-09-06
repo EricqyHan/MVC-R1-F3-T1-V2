@@ -69,7 +69,7 @@ const User = require('../models/User')
     req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
   
     const user = new User({
-      userName: req.body.userName,
+      userName: req.body.userName.trim(' '),
       email: req.body.email,
       password: req.body.password
     })
